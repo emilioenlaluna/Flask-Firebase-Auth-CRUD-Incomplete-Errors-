@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <h1>Dashboard</h1>
+    <h2>Create Blog Entry</h2>
+    <form method="POST" action="{{ url_for('new_blog') }}">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" required>
+        <br><br>
+        <label for="content">Content</label>
+        <textarea name="content" id="content" required></textarea>
+        <br><br>
+        <input type="submit" value="Create">
+    </form>
+    <h2>Your Blog Entries</h2>
+    <ul>
+        {% for blog in blogs %}
+        <li><a href="{{ url_for('view_blog', blog_id=blog['id']) }}">{{ blog['title'] }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

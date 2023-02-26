@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Blog{% endblock %}
+
+{% block content %}
+  <h1>Edit Blog Entry</h1>
+  <form method="post" enctype="multipart/form-data">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" value="{{ blog.title }}"><br><br>
+    <label for="content">Content:</label><br>
+    <textarea id="content" name="content" rows="10" cols="50">{{ blog.content }}</textarea><br><br>
+    {% if blog.image_url %}
+      <img src="{{ blog.image_url }}" alt="Blog Image"><br><br>
+    {% endif %}
+    <label for="image">Image:</label><br>
+    <input type="file" id="image" name="image"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
